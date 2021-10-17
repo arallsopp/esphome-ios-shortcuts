@@ -1,3 +1,5 @@
+# IN PROGRESS 
+
 # Accessing ESPHome with IOS Shortcuts
 
 ### Background
@@ -45,18 +47,22 @@ Name                 | State | Actions
 -------------------- | ------| ----------
 East Opening Relay	 | OFF   | <button>Toggle</button>
 East Closing Relay	 | OFF   | <button>Toggle</button>
-West Opening Relay	 | OFF   | <style="border:1px solid black">Toggle</style>
-West Closing Relay	 | OFF   | Toggle
-Open and Close East	 | OFF   | Toggle
-Open and Close West	 | OFF   | Toggle
-Garage Doors Reboot	 | OFF   | Toggle
+West Opening Relay	 | OFF   | <button>Toggle</button>
+West Closing Relay	 | OFF   | <button>Toggle</button>
+Open and Close East	 | OFF   | <button>Toggle</button>
+Open and Close West	 | OFF   | <button>Toggle</button>
+Garage Doors Reboot	 | OFF   | <button>Toggle</button>
 
+The names and options against each row will vary based upon the name and types you specify in your configuration.yaml
 
 ### Accessing the Webserver API
-Create a shortcut to the dash. That's a single click to open it and see the states.
+Typically, I've created a shortcut to the dash and shared that to my home page. That's a single click to open it and see the states.
 
 ### Accessing directly using shortcuts
 Add a shortcut (screenshot) that makes a post request.
 
 ### Accessing scripts
+You can use `on_press:` to trigger a sequence of events upon trigger, but sometimes you won't have a direct 1:1 connection between a script and a GPIO device.
+
+Currently, ESPHome does not seem to expose scripts through the API, so to trigger a series of events
 use template switches.

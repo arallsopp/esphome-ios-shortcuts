@@ -20,7 +20,37 @@ web_server:
   port: 80
 ```
 
-todo...
+> :warning: The ESPHome Documentation notes that enabling the webserver component cause issues by  **taking up a lot of device memory**. Although I've been running the web server for many years on ESP8266 devices (sonoff, Wemos D1 minis, etc) without issue, your mileage may vary.
+
+### Accessing the Webserver
+
+When flashed with a sketch that includes the `web_server` lines above, your ESPHome device will expose a web page at the node's IP and via mDNS as ` <name>.local/`.
+ 
+My garage-door sketch starts
+
+```yaml
+esphome:
+  name: garage-doors
+  platform: ESP8266
+  board: esp01_1m
+```
+So my webpage is accessible on my wifi via mDNS as:
+
+```http://garage-doors.local/```
+
+The web page returned is very lightweight, tabular, and includes a row for each sensor, cover, switch, light, etc. For my garage-door sketch, the page looks like this:
+
+
+Name                 | State | Actions
+-------------------- | ------| ----------
+East Opening Relay	 | OFF   | <button>Toggle</button>
+East Closing Relay	 | OFF   | <button>Toggle</button>
+West Opening Relay	 | OFF   | <style="border:1px solid black">Toggle</style>
+West Closing Relay	 | OFF   | Toggle
+Open and Close East	 | OFF   | Toggle
+Open and Close West	 | OFF   | Toggle
+Garage Doors Reboot	 | OFF   | Toggle
+
 
 ### Accessing the Webserver API
 Create a shortcut to the dash. That's a single click to open it and see the states.
